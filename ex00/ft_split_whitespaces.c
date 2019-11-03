@@ -35,4 +35,20 @@ int *word_length(char *str)
     }
     return (i);
 }
-char **ft_split_whitespaces(char *str);
+char **ft_split_whitespaces(char *str)
+{
+    char **arr;
+    int *lengths;
+    int i;
+
+    i = 0;
+    lengths = word_length(str);
+    //Allocating memory
+    arr = (char **)malloc(sizeof(char *) * (word_count(str) + 1));
+    while (i < word_count(str))
+    {
+        arr[i] = malloc(sizeof(char) * (lengths[i] + 1));
+        i++;
+    }
+    return (arr);
+}
